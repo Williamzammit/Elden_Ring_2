@@ -1,4 +1,5 @@
-import static Utils.Constants.*;
+//Constants/Item imports must look like this:
+//import static Utils.Constants.*;
 import MainFiles.LoopMain;
 
 public class Main {
