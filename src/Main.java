@@ -1,8 +1,12 @@
 import static Utils.Constants.*;
+import MainFiles.LoopMain;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        System.out.println(test1);
-      //test
+      
+      LoopMain mainLoopCall = new LoopMain();
+
+      mainLoopCall.mainLoop();
+
     }
 }
