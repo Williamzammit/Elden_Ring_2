@@ -14,6 +14,8 @@ public class LoopMain {
         while (gameState == true){
 
             System.out.println("TEST");
+
+            //Backup code to stop infinite loop
             gameState = false;
 
         }
