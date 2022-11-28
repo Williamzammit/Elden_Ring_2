@@ -11,9 +11,11 @@ public class Inventory {
     }
 
     public void viewInventory(){
+        int i2 = 1;
         for(Object i:inventory.values()){
-        System.out.println(i);
+        System.out.println("[" +i2 + "] " + i);
         }
+        i2++;
     }
 
     public void addItem(String newItem){
