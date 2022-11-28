@@ -27,10 +27,20 @@ public class Inventory {
             if(i == 10 && inventory.get("Slot" + i) != "Empty"){
                 System.out.println();
             }
-        }
+        }   
         
+    }
 
-                
+    public void deleteItem(String selectedItem){
+        for (int i = 1; i <= 10; i++){
+            if(inventory.get("Slot" + i).contains(selectedItem)){
+                inventory.put("Slot" + i, "Empty");
+                i = 10;
+            }
+            if(i == 10 && inventory.get("Slot" + i).contains(selectedItem)){
+            System.out.println("Item Not Found");
+            }
+        }
         
     }
     
