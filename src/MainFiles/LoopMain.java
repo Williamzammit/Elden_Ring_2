@@ -13,7 +13,7 @@ public class LoopMain {
         
         while (gameState == true){
 
-            System.out.println("TEST");
+            inventory.viewInventory();
 
             //Backup code to stop infinite loop
             gameState = false;
