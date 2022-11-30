@@ -74,8 +74,17 @@ public class Inventory {
                     if(choice < 11 && choice > 0){
                         System.out.println("Item added");
                     } else {
-                        System.out.println("Item Discarded");
+                        System.out.println("Slot not found, would you like to keep the item?" + "\n" + "(Yes, 1) (No, 2)");
+                        choice = input.nextInt();
+                        if(choice == 1){
+                            addItem(newItem);
+                        }
+                        else{
+                            System.out.println("item discarded");
+                        }
                     }
+                } else {
+                    System.out.println("Item Deleted");
                 }
             }
         }   

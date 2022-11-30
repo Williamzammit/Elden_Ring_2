@@ -1,5 +1,10 @@
 package Utils;
 
+/*for (int i = 1; i <= 10; i++){
+
+}
+for loop easy copy*/
+
 import java.util.HashMap;
 
 public class Constants {

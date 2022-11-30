@@ -6,14 +6,25 @@ import java.util.Scanner;
 
 public class LoopMain {
 
-    Inventory inventory = new Inventory();
+    Inventory m_inventory = new Inventory();
     Scanner input = new Scanner(System.in);
+
+    int intChoice;
 
     public void mainLoop(){
         
         while (gameState == true){
+        //All code within this while loop
 
-            inventory.viewInventory();
+        for (int i = 1; i <= 10; i++){
+            m_inventory.addItem("Health Potion 1");
+        }
+
+        System.out.println("[1] Open Inventory");
+        intChoice = input.nextInt();
+            m_inventory.viewInventory();
+
+            m_inventory.addItem("Mace of Light");
 
             //Backup code to stop infinite loop
             gameState = false;
