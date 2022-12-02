@@ -27,6 +27,7 @@ public class LoopMain {
             m_inventory.addItem("Mace of Light");
 
             //Backup code to stop infinite loop
+            //Will be replaced by other methods that end the game once they are created
             gameState = false;
 
         }
