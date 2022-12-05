@@ -5,6 +5,7 @@ package Utils;
 }
 for loop easy copy*/
 
+import java.util.TreeMap;
 import java.util.HashMap;
 
 public class Constants {
@@ -12,7 +13,7 @@ public class Constants {
   public static boolean gameState = true;
 
   public static HashMap<String, String> inventory = new HashMap<String, String>();
-  public static HashMap items = new HashMap();
+  public static TreeMap items = new TreeMap();
 
   //Player stats will be here
   //Values not finalized

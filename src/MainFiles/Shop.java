@@ -1,7 +1,7 @@
 package MainFiles;
 
 import static Utils.Constants.items;
-import java.util.HashMap;
+import java.util.TreeMap;
 import java.util.Scanner;
 
 public class Shop {
@@ -12,7 +12,8 @@ public class Shop {
     
     public void viewItems(int regionID){
 
-        System.out.println(items);
+        //Will have code here to get possible items based on region and display stats including price
+
         System.out.println("Would you like to purchase an Item?" + "\n" + "[1] Yes" + "\n" + "[2] No");
         choice = input.nextInt();
         if(choice == 1){
@@ -22,7 +23,7 @@ public class Shop {
 
     public void purchaseItems(int regionID){
 
-        //Will have code here to get possible items based on region and display stats including price as well as a [1]
+        //Will have code here to get possible items based on region and display stats including price as well as a [number]
         // in front of it to allow selection
 
         m_Inventory.addItem(selectedItem);
