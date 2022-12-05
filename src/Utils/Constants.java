@@ -12,6 +12,7 @@ public class Constants {
   public static boolean gameState = true;
 
   public static HashMap<String, String> inventory = new HashMap<String, String>();
+  public static HashMap items = new HashMap();
 
   //Player stats will be here
   //Values not finalized

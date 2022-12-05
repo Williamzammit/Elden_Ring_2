@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class LoopMain {
 
     Inventory m_inventory = new Inventory();
+    Shop m_shop = new Shop();
     Scanner input = new Scanner(System.in);
 
     int intChoice;
