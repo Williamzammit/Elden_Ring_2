@@ -1,6 +1,8 @@
 package MainFiles;
 
 import static Utils.Constants.*;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Inventory {
@@ -102,6 +104,15 @@ public class Inventory {
             }
         }
         
+    }
+    public int getInput() {
+        try{
+            choice = input.nextInt();
+            return choice;
+        } catch (InputMismatchException e){
+            getInput();
+            return choice;
+        }
     }
     
 }

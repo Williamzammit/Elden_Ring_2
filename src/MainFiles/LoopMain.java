@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class LoopMain {
 
     Inventory m_inventory = new Inventory();
+    Shop m_shop = new Shop();
     Scanner input = new Scanner(System.in);
 
     int intChoice;
@@ -27,6 +28,7 @@ public class LoopMain {
             m_inventory.addItem("Mace of Light");
 
             //Backup code to stop infinite loop
+            //Will be replaced by other methods that end the game once they are created
             gameState = false;
 
         }
