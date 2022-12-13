@@ -1,7 +1,8 @@
 package MainFiles;
 
 public class Entities  {
-    int health, damage;
+    int health;
+    int damage;
     String name;
 
     public Entities(String name, int health, int damage){

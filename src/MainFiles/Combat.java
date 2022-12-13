@@ -26,7 +26,8 @@ public class Combat {
         int i;
 
         while (combatTurn) {
-        System.out.println("\033[1n" + enemy.name + "\033[0m" + "\n" + "Health: " + enemy.health + "\n" + "Damage:" + enemy.damage + "\n");
+        System.out.println("\033[1n" + playerName + "\033[0m" + "\n" + "Health: " + playerStats.playerHealth + "\n" + "Damage: " + playerDamage + "\n");
+        System.out.println("\033[1n" + enemy.name + "\033[0m" + "\n" + "Health: " + enemy.health + "\n" + "Damage:" + enemyDamageDealt + "\n");
         System.out.println("Press \033[3mEnter\033[0m to continue");
         String startCombatInput = startCombat.nextLine();
         Scanner combatMove = new Scanner(System.in);
@@ -58,7 +59,7 @@ public class Combat {
             enemyTurn = true;
         }
         else if (combatMoveInput == '4'){
-            playerStats.playerHealth *= 1.2;
+            maxPlayerHealth *= 0.2 + playerStats.playerHealth;
             if (playerStats.playerHealth >= maxPlayerHealth) {
                 playerStats.playerHealth = maxPlayerHealth;
             }
@@ -109,7 +110,10 @@ public class Combat {
     if ((int)(enemyMaxHealth/4) > enemy.health && playerBuff == false) {
         //if the enemies health is below 25% and the player has not buffed their attack
         System.out.println("The enemy has healed 20% of their health! ");
-        enemy.health *= 1.2;
+        enemyMaxHealth *= 0.2 + enemy.health;
+        if (enemy.health >= enemyMaxHealth) {
+            enemy.health = enemyMaxHealth;
+        }
         enemyTurn = false;
         playerTurn = true;
     }
@@ -135,6 +139,9 @@ public class Combat {
         if (chance == 1) {
             System.out.println("The enemy has healed 20% of their health! ");
             enemy.health *= 1.2;
+            if (enemy.health >= enemyMaxHealth) {
+                enemy.health = enemyMaxHealth;
+            }
         }
         else if (chance == 2) {
             System.out.println("The enemy attacks for " + enemyDamageDealt + " damage! ");
@@ -155,6 +162,9 @@ public class Combat {
         if (chance == 1) {
             System.out.println("The enemy has healed 20% of their health! ");
             enemy.health *= 1.2;
+            if (enemy.health >= enemyMaxHealth) {
+                enemy.health = enemyMaxHealth;
+            }
         }
         else {
             System.out.println("The enemy is ready to block the next attack for 40% of its damage! ");
@@ -185,6 +195,9 @@ public class Combat {
         if (chance == 1) {
             System.out.println("The enemy has healed 20% of their health! ");
             enemy.health *= 1.2;
+            if (enemy.health >= enemyMaxHealth) {
+                enemy.health = enemyMaxHealth;
+            }
         }
         else if (chance == 2) {
             System.out.println("The enemy attacks for " + enemyDamageDealt + " damage! ");
