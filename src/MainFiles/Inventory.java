@@ -82,7 +82,7 @@ public class Inventory {
                             addItem(newItem);
                         }
                         else{
-                            System.out.println("item discarded");
+                            System.out.println("Item discarded");
                         }
                     }
                 } else {
