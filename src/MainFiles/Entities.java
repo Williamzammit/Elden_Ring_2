@@ -1,11 +1,11 @@
 package MainFiles;
 
 public class Entities  {
-    int health;
-    int damage;
+    double health;
+    double damage;
     String name;
 
-    public Entities(String name, int health, int damage){
+    public Entities(String name, double health, double damage){
         this.name = name;
         this.health = health;
         this.damage = damage;
@@ -17,8 +17,9 @@ public class Entities  {
     }
     class Player {
         String playerName;
-        int playerHealth, playerDamage;
-        public Player(String playerName, int playerHealth, int playerDamage){
+        int playerHealth;
+        double playerDamage;
+        public Player(String playerName, int playerHealth, double playerDamage){
             this.playerName = playerName;
             this.playerHealth = playerHealth;
             this.playerDamage = playerDamage;

@@ -17,10 +17,8 @@ public class LoopMain {
         
         while (gameState){
         //All code within this while loop
-        System.out.println("test");
 
         combat.initiateCombat(combat.getEnemy());
-        System.out.println("test2");
 
        /* for (int i = 1; i <= 10; i++){
             m_inventory.addItem("Health Potion 1");

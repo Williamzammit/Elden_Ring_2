@@ -19,6 +19,6 @@ public class Constants {
   //Values not finalized
   public static String playerName = "Joe";
   public static int playerHealth = 20;
-  public static int playerDamage = 5;
+  public static double playerDamage = 5;
   
 }
