@@ -17,9 +17,9 @@ public class Entities  {
     }
     class Player {
         String playerName;
-        int playerHealth;
+        double playerHealth;
         double playerDamage;
-        public Player(String playerName, int playerHealth, double playerDamage){
+        public Player(String playerName, double playerHealth, double playerDamage){
             this.playerName = playerName;
             this.playerHealth = playerHealth;
             this.playerDamage = playerDamage;

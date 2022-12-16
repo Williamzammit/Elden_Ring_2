@@ -13,20 +13,25 @@ public class LoopMain {
 
     int intChoice;
 
-    public void mainLoop(){
-        
+    
+
+    public void mainLoop() {
+    for (int i = 1; i <= 10; i++){
+        inventory.put("Slot" + i, "Empty");
+    }
         while (gameState){
         //All code within this while loop
-
+        for (int i = 1; i <= 10; i++){
+            inventory.put("Slot" + i, "Health Potion 1");
+            System.out.println("HELLOW");
+        }
         combat.initiateCombat(combat.getEnemy());
 
-       /* for (int i = 1; i <= 10; i++){
-            m_inventory.addItem("Health Potion 1");
-        }
+       m_inventory.viewInventory();
 
-        System.out.println("[1] Open Inventory");
+        /*System.out.println("[1] Open Inventory");
         intChoice = input.nextInt();
-            m_inventory.viewInventory();
+            
 
             m_inventory.addItem("Mace of Light");
 

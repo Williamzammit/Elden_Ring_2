@@ -4,11 +4,17 @@ import static Utils.Constants.*;
 import java.util.Scanner;
 
 public class Combat {
+    
     Scanner startCombat = new Scanner(System.in);
     Entities selectedEnemy;
     Entities[] enemies =  {new Entities("FortniteMan", 10, 5), new Entities("Peanuts", 20, 4), new Entities("lol", 7, 19), new Entities("Tutorial Enemy", 15, 2)};
     Player playerStats = new Player(playerName, playerHealth, playerDamage);
     boolean playerTurn = true, enemyTurn = true, combatTurn = true;
+    static double damageDealt;
+    static double maxPlayerHealth;
+    static double currentPlayerHealth;
+    
+
     public Entities getEnemy() {
     selectedEnemy = enemies[(int) (Math.random()*3)];
 
@@ -16,27 +22,29 @@ public class Combat {
     }
     
     public void initiateCombat(Entities enemy) {
+        Inventory m_inventory = new Inventory();
         double enemyMaxHealth = enemy.health;
         double enemyDamageDealt = enemy.damage;
-        double damageDealt = playerStats.playerDamage;
-        int maxPlayerHealth = playerHealth;
-        boolean playerBuff = false, enemyBuff = false, enemyBlocked = false;
+        damageDealt = playerStats.playerDamage;
+        maxPlayerHealth = playerStats.playerHealth;
+        currentPlayerHealth = maxPlayerHealth;
+        boolean playerBuff = false, enemyBuff = false;
         int chance; 
         String text = "YOU DIED ", text2 = "FOE VANGUISHED";
         int i;
 
         while (combatTurn) {
             System.out.println("------------------------------------------------------------------");
-        System.out.println(playerName + "\n" + "Health: " + playerStats.playerHealth + "\n" + "Damage: " + playerDamage + "\n");
+        System.out.println(playerName + "\n" + "Health: " + currentPlayerHealth + "\n" + "Damage: " + playerDamage + "\n");
         System.out.println(enemy.name + "\n" + "Health: " + enemy.health + "\n" + "Damage:" + enemyDamageDealt + "\n");
         System.out.println("Press \033[3mEnter\033[0m to continue");
         String startCombatInput = startCombat.nextLine();
         Scanner combatMove = new Scanner(System.in);
           
-        if (playerStats.playerHealth > 0) {
+        if (currentPlayerHealth > 0) {
             playerTurn();
         while (playerTurn) {
-        System.out.println("Your Turn: " + "\n" + "[1] Attack " + "\n" + "[2] Attack Buff " + "\n" + "[3] Block " + "\n" + "[4] Heal " + "\n" + "[5] Use Item " + "\n" + "[6] Flee ");
+        System.out.println("\n" + "Your Turn: " + "\n" + "[1] Attack " + "\n" + "[2] Attack Buff " + "\n" + "[3] Block " + "\n" + "[4] Heal " + "\n" + "[5] Use Item " + "\n" + "[6] Flee ");
         char combatMoveInput = combatMove.next(".").charAt(0);
         if (combatMoveInput == '1'){
             if(playerBuff) {
@@ -67,18 +75,33 @@ public class Combat {
             enemyTurn = true;
         }
         else if (combatMoveInput == '4'){
-            playerStats.playerHealth += maxPlayerHealth*0.4;
-            if (playerStats.playerHealth >= maxPlayerHealth) {
-                playerStats.playerHealth = maxPlayerHealth;
+            currentPlayerHealth += maxPlayerHealth*0.4;
+            if (currentPlayerHealth >= maxPlayerHealth) {
+                currentPlayerHealth = maxPlayerHealth;
             }
             System.out.println("You heal 40% of your Health");
+            
             playerTurn = false;
             enemyTurn = true;
         }
         else if (combatMoveInput == '5'){
-            System.out.println("test5");
-            playerTurn = false;
-            enemyTurn = true;
+            for(int i2 = 1; i2 <= 10; i2++){
+                if(inventory.get("Slot" + i2) != "Empty"){
+                    i2 = 11;
+                    m_inventory.useItem();
+                    if(currentPlayerHealth > maxPlayerHealth){
+                        currentPlayerHealth = maxPlayerHealth;
+                    }
+                    playerTurn = false;
+                    enemyTurn = true;
+                } else if (i2 == 10 && inventory.get("Slot"+i2) == "Empty"){
+                    System.out.println("You have no usable items! :(");
+                    playerTurn = true;
+                    enemyTurn = false;
+                }
+            
+            
+            }
         }       
         else if (combatMoveInput == '6'){
             chance = (int)(Math.random()*2);
@@ -130,7 +153,7 @@ public class Combat {
         chance = (int)(Math.random()*2);
         if (chance == 1){
             System.out.println("The enemy attacks for " + enemyDamageDealt + " damage! ");
-            playerStats.playerHealth -= enemyDamageDealt;
+            currentPlayerHealth -= enemyDamageDealt;
             damageDealt = playerDamage;
             enemyDamageDealt = enemy.damage;
             enemyBuff = false;
@@ -143,7 +166,7 @@ public class Combat {
             }
             else {
                 System.out.println("The enemy attacks for " + enemyDamageDealt + " damage! ");
-            playerStats.playerHealth -= enemyDamageDealt;
+            currentPlayerHealth -= enemyDamageDealt;
             damageDealt = playerDamage;
             enemyDamageDealt = enemy.damage;
             enemyBuff = false;
@@ -164,7 +187,7 @@ public class Combat {
         }
         else if (chance == 2) {
             System.out.println("The enemy attacks for " + enemyDamageDealt + " damage! ");
-            playerStats.playerHealth -= enemyDamageDealt;
+            currentPlayerHealth -= enemyDamageDealt;
             enemyDamageDealt = enemy.damage; 
             enemyBuff = false;
         }
@@ -176,7 +199,7 @@ public class Combat {
             }
             else {
                 System.out.println("The enemy attacks for " + enemyDamageDealt + " damage! ");
-            playerStats.playerHealth -= enemyDamageDealt;
+            currentPlayerHealth -= enemyDamageDealt;
             enemyDamageDealt = enemy.damage;
             enemyBuff = false;
             }
@@ -210,7 +233,7 @@ public class Combat {
         }
         else {
             System.out.println("The enemy attacks for " + enemyDamageDealt + " damage! ");
-            playerStats.playerHealth -= enemyDamageDealt;
+            currentPlayerHealth -= enemyDamageDealt;
             enemyDamageDealt = enemy.damage; 
             enemyBuff = false;
         }
@@ -229,7 +252,7 @@ public class Combat {
         }
         else if (chance == 2) {
             System.out.println("The enemy attacks for " + enemyDamageDealt + " damage! ");
-            playerStats.playerHealth -= enemyDamageDealt;
+            currentPlayerHealth -= enemyDamageDealt;
             enemyDamageDealt = enemy.damage; 
             enemyBuff = false;
         }

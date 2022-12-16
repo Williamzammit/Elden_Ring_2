@@ -4,19 +4,20 @@ import static Utils.Constants.*;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import Utils.Items;
 
-public class Inventory {
+class Inventory extends Combat{
     Scanner input = new Scanner(System.in);
     int choice;
+    Items items = new Items();
 
     
-    public Inventory(){
-        for (int i = 1; i <= 10; i++){
-            inventory.put("Slot" + i, "Empty");
-        }
+    public Inventory() {
+        
     }
 
     public void viewInventory(){
+        System.out.println("");
         int i2 = 1;
         for(int i = 1; i <= 10; i++){
         System.out.println("[" +i2 + "] " + inventory.get("Slot" + i));
@@ -113,6 +114,42 @@ public class Inventory {
             getInput();
             return choice;
         }
+    }
+
+    public void useItem() {
+        String selectedItem;
+        viewInventory();
+        System.out.println("Select an Item to use (1-10)");
+
+        choice = input.nextInt();
+        
+        selectedItem = inventory.get("Slot" + choice);
+        if(items.evaluateItemType(selectedItem) == 1){
+            //Damage Item
+            damageDealt *= items.evaluateItem(selectedItem);
+            inventory.put("Slot" + choice, "Empty");
+            System.out.println("You have increased your damage using " + selectedItem);
+        } else if(items.evaluateItemType(selectedItem) == 2){
+            //Health Item
+            currentPlayerHealth += maxPlayerHealth*items.evaluateItem(selectedItem);
+            inventory.put("Slot" + choice, "Empty");
+            System.out.println("You have healed yourself using " + selectedItem);
+        }
+    }
+
+
+    
+    
+
+    public String selectItem(){
+        String selectedItem;
+        viewInventory();
+        System.out.println("Select an Item to use (1-10)");
+
+        choice = input.nextInt();
+        selectedItem = inventory.get("Slot" + choice);
+
+        return selectedItem;
     }
     
 }
