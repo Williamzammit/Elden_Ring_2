@@ -1,7 +1,6 @@
 package MainFiles;
 
-import static Utils.Constants.items;
-import java.util.TreeMap;
+import static Utils.Constants.*;
 import java.util.Scanner;
 
 public class Shop {

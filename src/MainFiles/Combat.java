@@ -6,22 +6,23 @@ import java.util.Scanner;
 public class Combat {
     
     Scanner startCombat = new Scanner(System.in);
-    Entities selectedEnemy;
-    Entities[] enemies =  {new Entities("FortniteMan", 10, 5), new Entities("Peanuts", 20, 4), new Entities("lol", 7, 19), new Entities("Tutorial Enemy", 15, 2)};
+    Entities selectedEnemy = null;
+    
     Player playerStats = new Player(playerName, playerHealth, playerDamage);
-    boolean playerTurn = true, enemyTurn = true, combatTurn = true;
+    
     static double damageDealt;
     static double maxPlayerHealth;
     static double currentPlayerHealth;
     
 
     public Entities getEnemy() {
+    Entities[] enemies = {new Entities("FortniteMan", 10, 5), new Entities("Peanuts", 20, 4), new Entities("lol", 7, 19), new Entities("Tutorial Enemy", 15, 2)};
     selectedEnemy = enemies[(int) (Math.random()*3)];
-
         return selectedEnemy;
     }
     
     public void initiateCombat(Entities enemy) {
+        boolean playerTurn = true, enemyTurn = true, combatTurn = true;
         Inventory m_inventory = new Inventory();
         double enemyMaxHealth = enemy.health;
         double enemyDamageDealt = enemy.damage;
@@ -35,13 +36,13 @@ public class Combat {
 
         while (combatTurn) {
             System.out.println("------------------------------------------------------------------");
-        System.out.println(playerName + "\n" + "Health: " + currentPlayerHealth + "\n" + "Damage: " + playerDamage + "\n");
-        System.out.println(enemy.name + "\n" + "Health: " + enemy.health + "\n" + "Damage:" + enemyDamageDealt + "\n");
+        System.out.println(playerName + "\n" + "Health: " + (int)currentPlayerHealth + "\n" + "Damage: " + (int)playerDamage + "\n");
+        System.out.println(enemy.name + "\n" + "Health: " + (int)enemy.health + "\n" + "Damage:" + (int)enemyDamageDealt + "\n");
         System.out.println("Press \033[3mEnter\033[0m to continue");
         String startCombatInput = startCombat.nextLine();
         Scanner combatMove = new Scanner(System.in);
           
-        if (currentPlayerHealth > 0) {
+        if ((int)(currentPlayerHealth) > 0) {
             playerTurn();
         while (playerTurn) {
         System.out.println("\n" + "Your Turn: " + "\n" + "[1] Attack " + "\n" + "[2] Attack Buff " + "\n" + "[3] Block " + "\n" + "[4] Heal " + "\n" + "[5] Use Item " + "\n" + "[6] Flee ");
@@ -135,7 +136,9 @@ public class Combat {
             enemyTurn = false;
             combatTurn = false;
     }
-    if (enemy.health > 0) {
+
+    //Enemy Section
+    if ((int)(enemy.health) > 0) {
     while (enemyTurn) {
 
     if ((int)(enemyMaxHealth/4) > enemy.health && playerBuff == false) {

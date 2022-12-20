@@ -9,7 +9,7 @@ import Utils.Items;
 class Inventory extends Combat{
     Scanner input = new Scanner(System.in);
     int choice;
-    Items items = new Items();
+    Items m_items = new Items();
 
     
     public Inventory() {
@@ -17,7 +17,7 @@ class Inventory extends Combat{
     }
 
     public void viewInventory(){
-        System.out.println("");
+        System.out.println("\n" + "***** Inventory *****" + "\n");
         int i2 = 1;
         for(int i = 1; i <= 10; i++){
         System.out.println("[" +i2 + "] " + inventory.get("Slot" + i));
@@ -124,14 +124,14 @@ class Inventory extends Combat{
         choice = input.nextInt();
         
         selectedItem = inventory.get("Slot" + choice);
-        if(items.evaluateItemType(selectedItem) == 1){
+        if(m_items.evaluateItemType(selectedItem) == 1){
             //Damage Item
-            damageDealt *= items.evaluateItem(selectedItem);
+            damageDealt *= m_items.evaluateItem(selectedItem);
             inventory.put("Slot" + choice, "Empty");
             System.out.println("You have increased your damage using " + selectedItem);
-        } else if(items.evaluateItemType(selectedItem) == 2){
+        } else if(m_items.evaluateItemType(selectedItem) == 2){
             //Health Item
-            currentPlayerHealth += maxPlayerHealth*items.evaluateItem(selectedItem);
+            currentPlayerHealth += maxPlayerHealth*m_items.evaluateItem(selectedItem);
             inventory.put("Slot" + choice, "Empty");
             System.out.println("You have healed yourself using " + selectedItem);
         }
