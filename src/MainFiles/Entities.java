@@ -4,13 +4,13 @@ public class Entities  {
     double health;
     double damage;
     String name;
+    int skillPoints;
 
-    public Entities(String name, double health, double damage){
+    public Entities(String name, double health, double damage, int skillPoints){
         this.name = name;
         this.health = health;
         this.damage = damage;
-        
-        
+        this.skillPoints = skillPoints;
         
     }
 

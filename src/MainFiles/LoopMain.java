@@ -7,11 +7,12 @@ import java.util.Scanner;
 public class LoopMain {
 
     Inventory m_inventory = new Inventory();
-    Shop m_shop = new Shop();
     Scanner input = new Scanner(System.in);
     Combat m_combat = new Combat();
     Regions m_region = new Regions();
+    Skills m_skills = new Skills();
 
+    String inputBuffer;
     int intChoice;
     String options;
 
@@ -33,6 +34,7 @@ public class LoopMain {
     for(int i = 1; i <= 4; i++){
         regionAccess.put(i, false);
     }
+    //Creates the bossesKilled hashmap
     for(int i = 1; i <= 3; i++){
         bossesKilled.put(i, false);
     }
@@ -40,8 +42,20 @@ public class LoopMain {
         //All code within this while loop
         while (gameState){
         
-        
+        System.out.println("(Press Enter)");
+        input.nextLine();
+        input.nextLine();
         m_region.areaStartup(currentRegion[0], currentRegion[1]);
+
+
+        if(m_region.bossFight(currentRegion[0], currentRegion[1]) && !(bossesKilled.get(currentRegion[0]))){
+
+            System.out.println("A Powerful Foe Approaches! \n (Press Enter To Continue)");
+            input.nextLine();
+            inputBuffer = input.nextLine();
+            m_combat.initiateCombat(bossArray[(currentRegion[0]-1)]);
+        } else{
+
 
         //Begin code for asking player what to do
         options = "";
@@ -61,7 +75,19 @@ public class LoopMain {
             m_inventory.viewInventory();
         }
         else if(intChoice == 2){
-
+            System.out.println("[1] View Stats \n[2] Upgrade Stats");
+            System.out.println("\nSelect an option");
+            intChoice = input.nextInt();
+            switch(intChoice){
+                case 1:
+                m_skills.viewStats();
+                break;
+                case 2:
+                m_skills.upgradeStats();
+                break;
+                default:
+                System.out.println("Invalid Option");
+            }
         }
         else if(intChoice == 3){
             m_combat.initiateCombat(m_combat.getEnemy());
@@ -77,7 +103,7 @@ public class LoopMain {
         }
         //Backup code to stop infinite loop
         //Will be replaced by other methods that end the game once they are created*/
-
+    }
         }
     }
 }

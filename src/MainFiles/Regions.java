@@ -10,6 +10,7 @@ public class Regions {
     
     String options = "";
     int intChoice;
+    String bufferedLine;
 
     public boolean lastAreaInRegion(){
         if(currentRegion[0] == 1 && currentRegion[1] == 6){
@@ -25,6 +26,7 @@ public class Regions {
 
     public int regionIdentifier(){
         int numberOfAreas;
+        int Area = currentRegion[1];
 
         options = "";
         System.out.println("");
@@ -59,23 +61,24 @@ public class Regions {
             }
             break;
         case 2:
+        Area += 6;
         numberOfAreas = 6;
         if(areaAccess.get(7)){
             options += "\n [1] Dirt Path";
         }
-        if(areaAccess.get(8) || (currentRegion[1]+1)==8){
+        if(areaAccess.get(8) || (Area+1)==8){
             options += "\n [2] Old Oak Tree";
         }
-        if(areaAccess.get(9) || (currentRegion[1]+1)==9){
+        if(areaAccess.get(9) || (Area+1)==9){
             options += "\n [3] Desolate Cave";
         }
-        if(areaAccess.get(10) || (currentRegion[1]+1)==10){
+        if(areaAccess.get(10) || (Area+1)==10){
             options += "\n [4] Area 4";
         }
-        if(areaAccess.get(11) || (currentRegion[1]+1)==11){
+        if(areaAccess.get(11) || (Area+1)==11){
             options += "\n [5] Area 5";
         }
-        if(areaAccess.get(12) || (currentRegion[1]+1)==12){
+        if(areaAccess.get(12) || (Area+1)==12){
             options += "\n [6] Area 6";
         }
 
@@ -88,17 +91,18 @@ public class Regions {
             }
             break;
         case 3:
+        Area += 12;
         numberOfAreas = 4;
         if(areaAccess.get(13)){
             options += "\n [1] Dirt Path";
         }
-        if(areaAccess.get(14) || (currentRegion[1]+1)==14){
+        if(areaAccess.get(14) || (Area+1)==14){
             options += "\n [2] Old Oak Tree";
         }
-        if(areaAccess.get(15) || (currentRegion[1]+1)==15){
+        if(areaAccess.get(15) || (Area+1)==15){
             options += "\n [3] Desolate Cave";
         }
-        if(areaAccess.get(16) || (currentRegion[1]+1)==16){
+        if(areaAccess.get(16) || (Area+1)==16){
             options += "\n [4] Area 4";
         }
 
@@ -111,17 +115,18 @@ public class Regions {
             }
             break;
         case 4:
+        Area += 16;
         numberOfAreas = 6;
         if(areaAccess.get(17)){
             options += "\n [1] Dirt Path";
         }
-        if(areaAccess.get(18) || (currentRegion[1]+1)==18){
+        if(areaAccess.get(18) || (Area+1)==18){
             options += "\n [2] Old Oak Tree";
         }
-        if(areaAccess.get(19) || (currentRegion[1]+1)==19){
+        if(areaAccess.get(19) || (Area+1)==19){
             options += "\n [3] Desolate Cave";
         }
-        if(areaAccess.get(20) || (currentRegion[1]+1)==20){
+        if(areaAccess.get(20) || (Area+1)==20){
             options += "\n [4] Area 4";
         }
 
@@ -140,11 +145,12 @@ public class Regions {
     public void moveToNewArea(int Region, int newArea){
         if(newArea == 0){
             System.out.println("INVALID REGION DESTINATION");
-        }
+        } else{
         currentRegion[1] = newArea;
-    }
+    }}
 
     public void areaStartup(int Region, int Area) {
+        System.out.println("*****************************************");
         int placeHolder = Area;
         regionAccess.put(Region, true);
 
@@ -170,12 +176,39 @@ public class Regions {
         switch(Region){
             case 1:
             if(booleanDialogue.get(Area)){
-                System.out.println("1");
+                switch(Area){
+                    case 1:
+                    System.out.println("\n\nWelcome to this mystical forest where the trees grow backwards and there are all sorts of undiscovered wonders.");
+                    bufferedLine = input.nextLine();
+                    break;
+                    case 2:
+                    System.out.println("");
+                    bufferedLine = input.nextLine();
+                    break;
+                    case 3:
+                    System.out.println("");
+                    bufferedLine = input.nextLine();
+                    break;
+                    case 4:
+                    System.out.println("");
+                    bufferedLine = input.nextLine();
+                    break;
+                    case 5:
+                    System.out.println("");
+                    bufferedLine = input.nextLine();
+                    break;
+                    case 6:
+                    System.out.println("");
+                    bufferedLine = input.nextLine();
+                    break;
+                }
+                
             }
             booleanDialogue.put(Area, false);
             break;
             case 2:
             Area += 6;
+
             if(booleanDialogue.get(Area)){
                 System.out.println("2");
             }
@@ -196,6 +229,8 @@ public class Regions {
             booleanDialogue.put(Area, false);
             break;
         }
+        Area = placeHolder;
+        System.out.println("You are in \nRegion "+Region+", \nArea "+Area);
     }
 
     public void moveToNewRegion(int Region){
@@ -223,26 +258,56 @@ public class Regions {
         if(intChoice > 0 && intChoice <= 4){
             if(intChoice == 1){
                 if(regionAccess.get(1) && Region != 1){
-                    currentRegion[0] = intChoice;
+                    currentRegion[0] = intChoice; currentRegion[1] = 1;
                 } else {System.out.println("You cannot travel to this region!");}
             }
             else if(intChoice == 2){
                 if(bossesKilled.get(1) && Region != 2 && (regionAccess.get(2) || (Region+1) == 2)){
-                    currentRegion[0] = intChoice;
+                    currentRegion[0] = intChoice; currentRegion[1] = 1;
                 } else {System.out.println("You cannot travel to this region!");}
             }
             else if(intChoice == 3){
                 if(bossesKilled.get(2) && Region != 3 && (regionAccess.get(3) || (Region+1) == 3)){
-                    currentRegion[0] = intChoice;
+                    currentRegion[0] = intChoice; currentRegion[1] = 1;
                 } else {System.out.println("You cannot travel to this region!");}
             }
             else if(intChoice == 4){
                 if(bossesKilled.get(3) && Region != 4 && (regionAccess.get(4) || (Region+1) == 4)){
-                    currentRegion[0] = intChoice;
+                    currentRegion[0] = intChoice; currentRegion[1] = 1;
                 } else {System.out.println("You cannot travel to this region!");}
             } else {System.out.println("You cannot travel to this region!");}
 
         } else {System.out.println("This Region does not Exist!");}
         }
     }
+
+    public boolean bossFight(int Region, int Area){
+        switch(Region){
+            case 1:
+                if((Area == 6) && bosses[Region]){
+                    return bosses[Region];
+                }
+            break;
+            case 2:
+                if(Area == 6 && bosses[Region] == true){
+                    return bosses[Region];
+                }
+            break;
+            case 3:
+                if(Area == 4 && bosses[Region] == true){
+                    return bosses[Region];
+                }
+            break;
+            case 4:
+                if(Area == 4 && bosses[Region] == true){
+                    return bosses[Region];
+                }
+            break;
+
+        }
+            return false;
+        
+        
+    }
+
 }

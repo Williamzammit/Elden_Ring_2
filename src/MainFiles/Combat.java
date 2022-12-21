@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class Combat {
     
     Scanner startCombat = new Scanner(System.in);
+    Scanner input = new Scanner(System.in);
+    int intChoice;
     Entities selectedEnemy = null;
     
     Player playerStats = new Player(playerName, playerHealth, playerDamage);
@@ -13,11 +15,11 @@ public class Combat {
     static double damageDealt;
     static double maxPlayerHealth;
     static double currentPlayerHealth;
-    
+
 
     public Entities getEnemy() {
-    Entities[] enemies = {new Entities("FortniteMan", 10, 5), new Entities("Peanuts", 20, 4), new Entities("lol", 7, 19), new Entities("Tutorial Enemy", 15, 2)};
-    selectedEnemy = enemies[(int) (Math.random()*3)];
+    Entities[][] enemies = {{new Entities("Enemy 1", 10, 3, 3), new Entities("Enemy 2", 11, 4, 4), new Entities("Enemy 3", 12, 5, 5)}, {}, {}, {}};
+    selectedEnemy = enemies[(currentRegion[0]-1)][(int) (Math.random()*3)];
         return selectedEnemy;
     }
     
@@ -35,7 +37,7 @@ public class Combat {
         int i;
 
         while (combatTurn) {
-            System.out.println("------------------------------------------------------------------");
+        System.out.println("------------------------------------------------------------------");
         System.out.println(playerName + "\n" + "Health: " + (int)currentPlayerHealth + "\n" + "Damage: " + (int)playerDamage + "\n");
         System.out.println(enemy.name + "\n" + "Health: " + (int)enemy.health + "\n" + "Damage:" + (int)enemyDamageDealt + "\n");
         System.out.println("Press \033[3mEnter\033[0m to continue");
@@ -50,7 +52,7 @@ public class Combat {
         if (combatMoveInput == '1'){
             if(playerBuff) {
                 (enemy.health) -= ((int)(damageDealt*1.25))+1;
-                System.out.println("You attack for " + ((int)(damageDealt*1.25))+1 + " damage! ");
+                System.out.println("You attack for " + (int)((damageDealt*1.25)+1) + " damage! ");
             } else {
                 (enemy.health) -= (damageDealt);
                 System.out.println("You attack for " + damageDealt + " damage! ");
@@ -135,6 +137,7 @@ public class Combat {
           playerTurn = false;
             enemyTurn = false;
             combatTurn = false;
+            currentRegion[1] = 1;
     }
 
     //Enemy Section
@@ -155,7 +158,7 @@ public class Combat {
         //if the enemies health is above 50% and the player has not buffed their attack
         chance = (int)(Math.random()*2);
         if (chance == 1){
-            System.out.println("The enemy attacks for " + enemyDamageDealt + " damage! ");
+            System.out.println("The enemy attacks for " + (int)enemyDamageDealt + " damage! ");
             currentPlayerHealth -= enemyDamageDealt;
             damageDealt = playerDamage;
             enemyDamageDealt = enemy.damage;
@@ -168,7 +171,7 @@ public class Combat {
             enemyBuff = true;
             }
             else {
-                System.out.println("The enemy attacks for " + enemyDamageDealt + " damage! ");
+                System.out.println("The enemy attacks for " + (int)enemyDamageDealt + " damage! ");
             currentPlayerHealth -= enemyDamageDealt;
             damageDealt = playerDamage;
             enemyDamageDealt = enemy.damage;
@@ -189,7 +192,7 @@ public class Combat {
         }
         }
         else if (chance == 2) {
-            System.out.println("The enemy attacks for " + enemyDamageDealt + " damage! ");
+            System.out.println("The enemy attacks for " + (int)enemyDamageDealt + " damage! ");
             currentPlayerHealth -= enemyDamageDealt;
             enemyDamageDealt = enemy.damage; 
             enemyBuff = false;
@@ -201,7 +204,7 @@ public class Combat {
             enemyBuff = true;
             }
             else {
-                System.out.println("The enemy attacks for " + enemyDamageDealt + " damage! ");
+                System.out.println("The enemy attacks for " + (int)enemyDamageDealt + " damage! ");
             currentPlayerHealth -= enemyDamageDealt;
             enemyDamageDealt = enemy.damage;
             enemyBuff = false;
@@ -235,7 +238,7 @@ public class Combat {
             damageDealt /= 1.4; 
         }
         else {
-            System.out.println("The enemy attacks for " + enemyDamageDealt + " damage! ");
+            System.out.println("The enemy attacks for " + (int)enemyDamageDealt + " damage! ");
             currentPlayerHealth -= enemyDamageDealt;
             enemyDamageDealt = enemy.damage; 
             enemyBuff = false;
@@ -254,7 +257,7 @@ public class Combat {
         }
         }
         else if (chance == 2) {
-            System.out.println("The enemy attacks for " + enemyDamageDealt + " damage! ");
+            System.out.println("The enemy attacks for " + (int)enemyDamageDealt + " damage! ");
             currentPlayerHealth -= enemyDamageDealt;
             enemyDamageDealt = enemy.damage; 
             enemyBuff = false;
@@ -270,7 +273,7 @@ public class Combat {
 }
     }
     else {
-        for (i = 0; i < text.length(); i++){
+        for (i = 0; i < text2.length(); i++){
             System.out.printf("%c", text2.charAt(i));
             try{
               Thread.sleep(125);
@@ -281,6 +284,28 @@ public class Combat {
           playerTurn = false;
             enemyTurn = false;
             combatTurn = false;
+            if(enemy.name == boss1){
+                bossesKilled.put(1, true);
+                System.out.println("You can now progress to the next region!");
+            }
+            else if(enemy.name == boss2){
+                bossesKilled.put(2, true);
+                System.out.println("You can now progress to the next region!");
+            }
+            else if(enemy.name == boss3){
+                bossesKilled.put(3, true);
+                System.out.println("You can now progress to the next region!");
+            }
+            else if(enemy.name == boss4){
+                System.out.println("Congratulations! \nYou have defeated the final boss! \nWould you like to continue playing?");
+                System.out.println("[1] Yes \n[2] No");
+
+                intChoice = input.nextInt();
+                if(intChoice == 2){
+                    gameState = false;
+                    System.out.println("Thanks for Playing!");
+                }
+            }
     }
 }
 }
