@@ -12,7 +12,7 @@ public class Regions {
     int intChoice;
     String bufferedLine;
 
-    String[] journalText = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", };
+    String[] journalText = {"test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10", "test11", "test12", "test13", "test14", "test15", "test16", "test17", "test18", "test19", "test20", };
 
     public boolean lastAreaInRegion(){
         if(currentRegion[0] == 1 && currentRegion[1] == 6){
@@ -36,22 +36,22 @@ public class Regions {
         case 1:
         numberOfAreas = 6;
         if(areaAccess.get(1)){
-            options += "\n [1] Dirt Path";
+            options += "\n [1] Moisty Mire";
         }
         if(areaAccess.get(2) || (currentRegion[1]+1)==2){
-            options += "\n [2] Old Oak Tree";
+            options += "\n [2] Slurppy Swamp";
         }
         if(areaAccess.get(3) || (currentRegion[1]+1)==3){
-            options += "\n [3] Desolate Cave";
+            options += "\n [3] Frenzy Fields";
         }
         if(areaAccess.get(4) || (currentRegion[1]+1)==4){
-            options += "\n [4] Area 4";
+            options += "\n [4] Loot Lake";
         }
         if(areaAccess.get(5) || (currentRegion[1]+1)==5){
-            options += "\n [5] Area 5";
+            options += "\n [5] Wild Thicket";
         }
         if(areaAccess.get(6) || (currentRegion[1]+1)==6){
-            options += "\n [6] Area 6";
+            options += "\n [6] Gargoyles Soil";
         }
 
             System.out.println(options);
@@ -66,22 +66,22 @@ public class Regions {
         Area += 6;
         numberOfAreas = 6;
         if(areaAccess.get(7)){
-            options += "\n [1] Dirt Path";
+            options += "\n [1] The Great Hall";
         }
         if(areaAccess.get(8) || (Area+1)==8){
-            options += "\n [2] Old Oak Tree";
+            options += "\n [2] Bed Chambers";
         }
         if(areaAccess.get(9) || (Area+1)==9){
-            options += "\n [3] Desolate Cave";
+            options += "\n [3] Tilted Towers";
         }
         if(areaAccess.get(10) || (Area+1)==10){
-            options += "\n [4] Area 4";
+            options += "\n [4] The Chapel";
         }
         if(areaAccess.get(11) || (Area+1)==11){
-            options += "\n [5] Area 5";
+            options += "\n [5] The Basement";
         }
         if(areaAccess.get(12) || (Area+1)==12){
-            options += "\n [6] Area 6";
+            options += "\n [6] Margits Gatehouse";
         }
 
             System.out.println(options);
@@ -96,16 +96,16 @@ public class Regions {
         Area += 12;
         numberOfAreas = 4;
         if(areaAccess.get(13)){
-            options += "\n [1] Dirt Path";
+            options += "\n [1] Main Gutter";
         }
         if(areaAccess.get(14) || (Area+1)==14){
-            options += "\n [2] Old Oak Tree";
+            options += "\n [2] Septic Tank";
         }
         if(areaAccess.get(15) || (Area+1)==15){
-            options += "\n [3] Desolate Cave";
+            options += "\n [3] Toxic Lake";
         }
         if(areaAccess.get(16) || (Area+1)==16){
-            options += "\n [4] Area 4";
+            options += "\n [4] Billy's Drainpipe Labyrinth";
         }
 
             System.out.println(options);
@@ -120,7 +120,7 @@ public class Regions {
         Area += 16;
         numberOfAreas = 6;
         if(areaAccess.get(17)){
-            options += "\n [1] Dirt Path";
+            options += "\n [1] Winding Staircase";
         }
         if(areaAccess.get(18) || (Area+1)==18){
             options += "\n [2] Old Oak Tree";
