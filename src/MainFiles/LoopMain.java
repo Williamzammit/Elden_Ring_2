@@ -35,8 +35,12 @@ public class LoopMain {
         regionAccess.put(i, false);
     }
     //Creates the bossesKilled hashmap
-    for(int i = 1; i <= 3; i++){
+    for(int i = 1; i <= 4; i++){
         bossesKilled.put(i, false);
+    }
+    //Creates the journalEntries HashMap
+    for(int i = 1; i <= 20; i++){
+        journalEntries.put(i, true);
     }
         
         //All code within this while loop
@@ -76,7 +80,7 @@ public class LoopMain {
         }
         else if(intChoice == 2){
             System.out.println("[1] View Stats \n[2] Upgrade Stats");
-            System.out.println("\nSelect an option");
+            System.out.println("\nSelect an option\n");
             intChoice = input.nextInt();
             switch(intChoice){
                 case 1:
@@ -99,7 +103,7 @@ public class LoopMain {
             m_region.moveToNewRegion(currentRegion[0]);
         }
         else if(true && intChoice == 6){
-
+            m_region.journalEntry(currentRegion[0], currentRegion[1]);
         }
         //Backup code to stop infinite loop
         //Will be replaced by other methods that end the game once they are created*/

@@ -18,8 +18,11 @@ public class Combat {
 
 
     public Entities getEnemy() {
-    Entities[][] enemies = {{new Entities("Enemy 1", 10, 3, 3), new Entities("Enemy 2", 11, 4, 4), new Entities("Enemy 3", 12, 5, 5)}, {}, {}, {}};
-    selectedEnemy = enemies[(currentRegion[0]-1)][(int) (Math.random()*3)];
+    Entities[][] enemies = {{new Entities("Goblin", 10, 3, 1), new Entities("Fragile Spirit", 11, 6, 4), new Entities("Living Stone", 20, 4, 5), new Entities("Wolf-man", 18, 5, 7)}, 
+                            {new Entities("Guard", 20, 8, 5), new Entities("Ancient Spirit", 17, 10, 4), new Entities("Famed Archer", 15, 12, 6), new Entities("Orc Warrior", 18, 9, 4)}, 
+                            {new Entities("Overgrown Lobster", 24, 11, 9), new Entities("Forgotten Spirit", 22, 13, 8), new Entities("Mold Slime", 21, 8, 6), new Entities("Silent Serpent", 24, 9, 7)}, 
+                            {new Entities("Dragon", 34, 14, 15), new Entities("Celestial Spirit", 28, 16, 14), new Entities("Wind Giant", 32, 13, 11), new Entities("Night Raven", 27, 13, 12)}};
+    selectedEnemy = enemies[(currentRegion[0]-1)][(int) (Math.random()*4)];
         return selectedEnemy;
     }
     
@@ -284,6 +287,7 @@ public class Combat {
           playerTurn = false;
             enemyTurn = false;
             combatTurn = false;
+            playerSkillPoints += enemy.skillPoints;
             if(enemy.name == boss1){
                 bossesKilled.put(1, true);
                 System.out.println("You can now progress to the next region!");

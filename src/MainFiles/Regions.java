@@ -12,6 +12,8 @@ public class Regions {
     int intChoice;
     String bufferedLine;
 
+    String[] journalText = {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", };
+
     public boolean lastAreaInRegion(){
         if(currentRegion[0] == 1 && currentRegion[1] == 6){
             return true;
@@ -284,23 +286,23 @@ public class Regions {
     public boolean bossFight(int Region, int Area){
         switch(Region){
             case 1:
-                if((Area == 6) && bosses[Region]){
-                    return bosses[Region];
+                if((Area == 6) && bosses[Region-1]){
+                    return true;
                 }
             break;
             case 2:
-                if(Area == 6 && bosses[Region] == true){
-                    return bosses[Region];
+                if(Area == 6 && bosses[Region-1]){
+                    return true;
                 }
             break;
             case 3:
-                if(Area == 4 && bosses[Region] == true){
-                    return bosses[Region];
+                if(Area == 4 && bosses[Region-1]){
+                    return true;
                 }
             break;
             case 4:
-                if(Area == 4 && bosses[Region] == true){
-                    return bosses[Region];
+                if(Area == 4 && bosses[Region-1]){
+                    return true;
                 }
             break;
 
@@ -310,4 +312,38 @@ public class Regions {
         
     }
 
+    public void journalEntry(int Region, int Area){
+        System.out.println("*****************************************");
+
+        switch(Region){
+            case 1:
+                if(journalEntries.get(Area)){
+                    System.out.println(journalText[Area-1]);
+                    journalEntries.put(Area, false);
+                }
+            break;
+            case 2:
+            Area+=6;
+            if(journalEntries.get(Area)){
+                System.out.println(journalText[Area-1]);
+                journalEntries.put(Area, false);
+            }
+            break;
+            case 3:
+            Area+=12;
+            if(journalEntries.get(Area)){
+                System.out.println(journalText[Area-1]);
+                journalEntries.put(Area, false);
+            }
+            break;
+            case 4:
+            Area+=16;
+            if(journalEntries.get(Area)){
+                System.out.println(journalText[Area-1]);
+                journalEntries.put(Area, false);
+            }
+            break;
+        }
+
+    }
 }

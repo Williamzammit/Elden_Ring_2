@@ -16,8 +16,9 @@ public class Skills {
 
     public void viewStats(){
 
-        System.out.println("Health: " + playerHealth + "\n Level: "+ healthLevel);
+        System.out.println("\nHealth: " + playerHealth + "\n Level: "+ healthLevel);
         System.out.println("Damage: " + playerDamage + "\n Level: "+ damageLevel + "\n");
+        System.out.println("Your Skill Points: "+ playerSkillPoints);
     }
 
     public void upgradeStats(){
@@ -25,6 +26,8 @@ public class Skills {
         System.out.println("Cost of upgrading = " + healthCost);
         System.out.println("[2] Current Damage = " + playerDamage);
         System.out.println("Cost of upgrading = " + damageCost);
+
+        System.out.println("Your Skill Points: "+ playerSkillPoints);
 
         System.out.println("What would you like to upgrade?");
 
