@@ -18,7 +18,7 @@ public class Constants {
   //Values not finalized
   public static String playerName = "Joe";
   public static double playerHealth = 20;
-  public static double playerDamage = 115;
+  public static double playerDamage = 5;
 
   public static int playerSkillPoints = 0;
 
@@ -26,7 +26,7 @@ public class Constants {
   //Boss Names
   public static final String boss1 = "Gargoyle";
   public static final String boss2 = "Margit";
-  public static final String boss3 = "Billy";
+  public static final String boss3 = "Reformed Orthodox Rabbi Billy";
   public static final String boss4 = "Radagon of the Golden Order";
 
   //Region variables

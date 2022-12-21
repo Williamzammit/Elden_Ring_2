@@ -36,7 +36,7 @@ public class Combat {
         currentPlayerHealth = maxPlayerHealth;
         boolean playerBuff = false, enemyBuff = false;
         int chance; 
-        String text = "YOU DIED ", text2 = "FOE VANGUISHED";
+        String text = "YOU DIED ", text2 = "FOE VANGUISHED ";
         int i;
 
         while (combatTurn) {
