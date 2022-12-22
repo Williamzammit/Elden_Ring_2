@@ -18,7 +18,7 @@ public class Constants {
   //Values not finalized
   public static String playerName = "Joe";
   public static double playerHealth = 20;
-  public static double playerDamage = 5;
+  public static double playerDamage = 115;
 
   public static int playerSkillPoints = 0;
 
@@ -38,5 +38,5 @@ public class Constants {
   public static HashMap<Integer, Boolean> journalEntries = new HashMap<Integer, Boolean>();
 
   public static boolean[] bosses = {true, true, true, true};
-  public static Entities[] bossArray = {new Entities(boss1, 40, 5, 10), new Entities(boss2, 80, 10, 15), new Entities(boss3, 150, 8, 20), new Entities(boss4, 200, 20, 25)};
+  //public static Entities[] bossArray = {new Entities(boss1, 40, 5, 10), new Entities(boss2, 80, 10, 15), new Entities(boss3, 150, 8, 20), new Entities(boss4, 200, 20, 25)};
 }

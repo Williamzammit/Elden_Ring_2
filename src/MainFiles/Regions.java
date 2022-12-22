@@ -123,13 +123,13 @@ public class Regions {
             options += "\n [1] Winding Staircase";
         }
         if(areaAccess.get(18) || (Area+1)==18){
-            options += "\n [2] Old Oak Tree";
+            options += "\n [2] Crumbling Window";
         }
         if(areaAccess.get(19) || (Area+1)==19){
-            options += "\n [3] Desolate Cave";
+            options += "\n [3] The Peak";
         }
         if(areaAccess.get(20) || (Area+1)==20){
-            options += "\n [4] Area 4";
+            options += "\n [4] The Golden Order's Palace";
         }
 
             System.out.println(options);
@@ -210,23 +210,82 @@ public class Regions {
             break;
             case 2:
             Area += 6;
-
             if(booleanDialogue.get(Area)){
-                System.out.println("2");
+                switch(Area){
+                    case 7:
+                    System.out.println("\n\nWelcome to this mystical forest where the trees grow backwards and there are all sorts of undiscovered wonders.");
+                    bufferedLine = input.nextLine();
+                    break;
+                    case 8:
+                    System.out.println("");
+                    bufferedLine = input.nextLine();
+                    break;
+                    case 9:
+                    System.out.println("");
+                    bufferedLine = input.nextLine();
+                    break;
+                    case 10:
+                    System.out.println("");
+                    bufferedLine = input.nextLine();
+                    break;
+                    case 11:
+                    System.out.println("");
+                    bufferedLine = input.nextLine();
+                    break;
+                    case 12:
+                    System.out.println("");
+                    bufferedLine = input.nextLine();
+                    break;
+                }
+                
             }
             booleanDialogue.put(Area, false);
             break;
             case 3:
             Area += 12;
             if(booleanDialogue.get(Area)){
-                System.out.println("3");
+                switch(Area){
+                    case 13:
+                    System.out.println("\n\nWelcome to this mystical forest where the trees grow backwards and there are all sorts of undiscovered wonders.");
+                    bufferedLine = input.nextLine();
+                    break;
+                    case 14:
+                    System.out.println("");
+                    bufferedLine = input.nextLine();
+                    break;
+                    case 15:
+                    System.out.println("");
+                    bufferedLine = input.nextLine();
+                    break;
+                    case 16:
+                    System.out.println("");
+                    bufferedLine = input.nextLine();
+                    break;
+                }
             }
             booleanDialogue.put(Area, false);
             break;
             case 4:
             Area += 16;
             if(booleanDialogue.get(Area)){
-                System.out.println("4");
+                switch(Area){
+                    case 17:
+                    System.out.println("\n\nWelcome to this mystical forest where the trees grow backwards and there are all sorts of undiscovered wonders.");
+                    bufferedLine = input.nextLine();
+                    break;
+                    case 18:
+                    System.out.println("");
+                    bufferedLine = input.nextLine();
+                    break;
+                    case 19:
+                    System.out.println("");
+                    bufferedLine = input.nextLine();
+                    break;
+                    case 20:
+                    System.out.println("");
+                    bufferedLine = input.nextLine();
+                    break;
+                }
             }
             booleanDialogue.put(Area, false);
             break;

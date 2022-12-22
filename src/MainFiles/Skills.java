@@ -13,6 +13,7 @@ public class Skills {
 
     Scanner input = new Scanner(System.in);
     public int intChoice;
+    String bufferedLine;
 
     public void viewStats(){
 
@@ -27,7 +28,7 @@ public class Skills {
         System.out.println("[2] Current Damage = " + playerDamage);
         System.out.println("Cost of upgrading = " + damageCost);
 
-        System.out.println("Your Skill Points: "+ playerSkillPoints);
+        System.out.println("\nYour Skill Points: "+ playerSkillPoints);
 
         System.out.println("What would you like to upgrade?");
 
@@ -50,7 +51,7 @@ public class Skills {
                     damageIncrease += 2;
                     damageCost += 1;
                     System.out.println("New Damage: " + playerDamage);
-                } else {System.out.println("\n Not Enough Skill Points!");}
+                } else {System.out.println("\n Not Enough Skill Points!");bufferedLine = input.nextLine();bufferedLine = input.nextLine();}
             break;
         }
     }

@@ -10,23 +10,33 @@ public class Combat {
     int intChoice;
     Entities selectedEnemy = null;
     
-    Player playerStats = new Player(playerName, playerHealth, playerDamage);
+    //Player playerStats = new Player(playerName, playerHealth, playerDamage);
     
     static double damageDealt;
     static double maxPlayerHealth;
     static double currentPlayerHealth;
 
 
-    public Entities getEnemy() {
+    public Entities getEnemy(boolean Boss) {
+        if(Boss){
+            Entities[] bossArray = {new Entities(boss1, 40, 5, 10), 
+                                    new Entities(boss2, 80, 10, 15), 
+                                    new Entities(boss3, 150, 8, 20), 
+                                    new Entities(boss4, 200, 20, 25)};
+            selectedEnemy = bossArray[currentRegion[0]-1];
+            return selectedEnemy;
+        }else{
     Entities[][] enemies = {{new Entities("Goblin", 10, 3, 1), new Entities("Fragile Spirit", 11, 6, 4), new Entities("Living Stone", 20, 4, 5), new Entities("Wolf-man", 18, 5, 7)}, 
                             {new Entities("Guard", 20, 8, 5), new Entities("Ancient Spirit", 17, 10, 4), new Entities("Famed Archer", 15, 12, 6), new Entities("Orc Warrior", 18, 9, 4)}, 
                             {new Entities("Overgrown Lobster", 24, 11, 9), new Entities("Forgotten Spirit", 22, 13, 8), new Entities("Mold Slime", 21, 8, 6), new Entities("Silent Serpent", 24, 9, 7)}, 
                             {new Entities("Dragon", 34, 14, 15), new Entities("Celestial Spirit", 28, 16, 14), new Entities("Wind Giant", 32, 13, 11), new Entities("Night Raven", 27, 13, 12)}};
     selectedEnemy = enemies[(currentRegion[0]-1)][(int) (Math.random()*4)];
         return selectedEnemy;
+        }
     }
     
     public void initiateCombat(Entities enemy) {
+        Player playerStats = new Player(playerName, playerHealth, playerDamage);
         boolean playerTurn = true, enemyTurn = true, combatTurn = true;
         Inventory m_inventory = new Inventory();
         double enemyMaxHealth = enemy.health;
@@ -40,15 +50,16 @@ public class Combat {
         int i;
 
         while (combatTurn) {
+            if ((int)(currentPlayerHealth) > 0){
         System.out.println("------------------------------------------------------------------");
         System.out.println(playerName + "\n" + "Health: " + (int)currentPlayerHealth + "\n" + "Damage: " + (int)playerDamage + "\n");
         System.out.println(enemy.name + "\n" + "Health: " + (int)enemy.health + "\n" + "Damage:" + (int)enemyDamageDealt + "\n");
         System.out.println("Press \033[3mEnter\033[0m to continue");
         String startCombatInput = startCombat.nextLine();
+            }
         Scanner combatMove = new Scanner(System.in);
           
         if ((int)(currentPlayerHealth) > 0) {
-            playerTurn();
         while (playerTurn) {
         System.out.println("\n" + "Your Turn: " + "\n" + "[1] Attack " + "\n" + "[2] Attack Buff " + "\n" + "[3] Block " + "\n" + "[4] Heal " + "\n" + "[5] Use Item " + "\n" + "[6] Flee ");
         char combatMoveInput = combatMove.next(".").charAt(0);
@@ -81,11 +92,11 @@ public class Combat {
             enemyTurn = true;
         }
         else if (combatMoveInput == '4'){
-            currentPlayerHealth += maxPlayerHealth*0.4;
+            currentPlayerHealth += maxPlayerHealth*0.2;
             if (currentPlayerHealth >= maxPlayerHealth) {
                 currentPlayerHealth = maxPlayerHealth;
             }
-            System.out.println("You heal 40% of your Health");
+            System.out.println("You heal 20% of your Health");
             
             playerTurn = false;
             enemyTurn = true;
@@ -129,6 +140,12 @@ public class Combat {
     }
     }
     else {
+        playerSkillPoints -= 8;
+        System.out.println("You have lost 8 skill points!");
+        if(playerSkillPoints < 0){
+            playerSkillPoints = 0;
+        }
+
         for (i = 0; i < text.length(); i++){
             System.out.printf("%c", text.charAt(i));
             try{
@@ -149,8 +166,8 @@ public class Combat {
 
     if ((int)(enemyMaxHealth/4) > enemy.health && playerBuff == false) {
         //if the enemies health is below 25% and the player has not buffed their attack
-        System.out.println("The enemy has healed 40% of their health! ");
-        enemyMaxHealth *= 0.4 + enemy.health;
+        System.out.println("The enemy has healed 20% of their health! ");
+        enemyMaxHealth *= 0.2 + enemy.health;
         if (enemy.health >= enemyMaxHealth) {
             enemy.health = enemyMaxHealth;
         }
@@ -188,8 +205,8 @@ public class Combat {
         //if the enemies health is below 50% and the player has not buffed their attack
         chance = (int)(Math.random()*3);
         if (chance == 1) {
-            System.out.println("The enemy has healed 40% of their health! ");
-        enemy.health += enemyMaxHealth*0.4;
+            System.out.println("The enemy has healed 20% of their health! ");
+        enemy.health += enemyMaxHealth*0.2;
         if (enemy.health >= enemyMaxHealth) {
             enemy.health = enemyMaxHealth;
         }
@@ -220,8 +237,8 @@ public class Combat {
         //if the enemies health is below 25% and the player has buffed their attack
         chance = (int)(Math.random()*2);
         if (chance == 1) {
-            System.out.println("The enemy has healed 40% of their health! ");
-            enemy.health += enemyMaxHealth*0.4;
+            System.out.println("The enemy has healed 20% of their health! ");
+            enemy.health += enemyMaxHealth*0.2;
         if (enemy.health >= enemyMaxHealth) {
             enemy.health = enemyMaxHealth;
         }
@@ -253,8 +270,8 @@ public class Combat {
         //if the enemies health us below 50% and the player has buffed their attack
         chance = (int)(Math.random()*3);
         if (chance == 1) {
-            System.out.println("The enemy has healed 40% of their health! ");
-            enemy.health += enemyMaxHealth*0.4;
+            System.out.println("The enemy has healed 20% of their health! ");
+            enemy.health += enemyMaxHealth*0.2;
         if (enemy.health >= enemyMaxHealth) {
             enemy.health = enemyMaxHealth;
         }
@@ -276,6 +293,7 @@ public class Combat {
 }
     }
     else {
+        System.out.println("");
         for (i = 0; i < text2.length(); i++){
             System.out.printf("%c", text2.charAt(i));
             try{
@@ -288,19 +306,27 @@ public class Combat {
             enemyTurn = false;
             combatTurn = false;
             playerSkillPoints += enemy.skillPoints;
+            System.out.println("\nYou earned " + enemy.skillPoints + " Skill Point!");
             if(enemy.name == boss1){
                 bossesKilled.put(1, true);
                 System.out.println("You can now progress to the next region!");
+                m_inventory.addItem("Health Potion 1");
+                System.out.println("You have recieved an Item!");
             }
             else if(enemy.name == boss2){
                 bossesKilled.put(2, true);
                 System.out.println("You can now progress to the next region!");
+                m_inventory.addItem("Health Potion 1");
+                System.out.println("You have recieved an Item!");
             }
             else if(enemy.name == boss3){
                 bossesKilled.put(3, true);
                 System.out.println("You can now progress to the next region!");
+                m_inventory.addItem("Health Potion 1");
+                System.out.println("You have recieved an Item!");
             }
             else if(enemy.name == boss4){
+                m_inventory.addItem("Health Potion 1");
                 System.out.println("Congratulations! \nYou have defeated the final boss! \nWould you like to continue playing?");
                 System.out.println("[1] Yes \n[2] No");
 
@@ -309,12 +335,17 @@ public class Combat {
                     gameState = false;
                     System.out.println("Thanks for Playing!");
                 }
+            } else {
+                int result;
+                result = (int)(Math.random()*3);
+                if(result == 2){
+                    m_inventory.addItem("Health Potion 1");
+                }
             }
     }
 }
 }
-    public void playerTurn(){
-
+    public void getItem(int chance){
     }
     public void enemyTurn(){
 

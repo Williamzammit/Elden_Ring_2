@@ -48,7 +48,6 @@ public class LoopMain {
         
         System.out.println("(Press Enter)");
         input.nextLine();
-        input.nextLine();
         m_region.areaStartup(currentRegion[0], currentRegion[1]);
 
 
@@ -56,8 +55,7 @@ public class LoopMain {
 
             System.out.println("A Powerful Foe Approaches! \n (Press Enter To Continue)");
             input.nextLine();
-            inputBuffer = input.nextLine();
-            m_combat.initiateCombat(bossArray[(currentRegion[0]-1)]);
+            m_combat.initiateCombat(m_combat.getEnemy(true));
         } else{
 
 
@@ -73,10 +71,17 @@ public class LoopMain {
         } else {options += "\n";}
 
         System.out.println(options);
+        try{
         intChoice = input.nextInt();
-
+        }
+        catch (Exception e) {
+            System.out.println("Invalid input!");
+        }
+        
+        input.nextLine();
         if(intChoice == 1){
             m_inventory.viewInventory();
+            intChoice = 0;
         }
         else if(intChoice == 2){
             System.out.println("[1] View Stats \n[2] Upgrade Stats");
@@ -92,18 +97,23 @@ public class LoopMain {
                 default:
                 System.out.println("Invalid Option");
             }
+            intChoice = 0;
         }
         else if(intChoice == 3){
-            m_combat.initiateCombat(m_combat.getEnemy());
+            m_combat.initiateCombat(m_combat.getEnemy(false));
+            intChoice = 0;
         }
         else if(intChoice == 4){
             m_region.moveToNewArea(currentRegion[0], m_region.regionIdentifier());
+            intChoice = 0;
         }
         else if(intChoice == 5){
             m_region.moveToNewRegion(currentRegion[0]);
+            intChoice = 0;
         }
         else if(true && intChoice == 6){
             m_region.journalEntry(currentRegion[0], currentRegion[1]);
+            intChoice = 0;
         }
         //Backup code to stop infinite loop
         //Will be replaced by other methods that end the game once they are created*/
