@@ -12,7 +12,29 @@ public class Regions {
     int intChoice;
     String bufferedLine;
 
-    String[] journalText = {"test1", "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10", "test11", "test12", "test13", "test14", "test15", "test16", "test17", "test18", "test19", "test20", };
+    String[] journalText = {"Where am I? I can't seem to remember how I got here..", 
+                            "Huh, this place is strange, theres a sort of.. magic to these woods", 
+                            "Wasn't I with my father before this? I wonder what happened..", 
+                            "There's something wrong with this lake.. Almost like a disease has overtaken it...", 
+                            "What was that noise?!! Oh man I wish I wasn't here...", 
+                            "That creature, it seemed to be the source of the corruption... I wonder if there are any more?..", 
+                            
+                            "Well for an abandoned castle this hallway seems suspiciously well-maintained...", 
+                            "Jeez, I wonder when these books were last read...", 
+                            "This castle is gonna be the death of me....", 
+                            "Hmmm this whole place is still clean, there's no way its abandoned...", 
+                            "Huh, there's markings on the wall, Radagon? who could that be?...", 
+                            "These fights are not getting any easier.... I wonder how many more of these creatures there could be...", 
+                            
+                            "Eww, this whole area is not the best place to be, enemies are getting very strange as well", 
+                            "These creatures all seem to be living in fear... Maybe if I find out why I can help them...", 
+                            "There has to be some sort of chemical thats screwing with the creatures down here, that lake definately does not have water in it...", 
+                            "There, I can see a clearing, I can finally get out of this disgusting toxic pit", 
+                            
+                            "The markings on the wall, I think Radagon is here...", 
+                            "Yikes, after that bridge I've been thinking, is this really all worth it?", 
+                            "Wow, I am really high up, I hope I can go home after this..", 
+                            "Well, at least some of these creatures seem to be healing.. there's always more work to do around here though.", };
 
     public boolean lastAreaInRegion(){
         if(currentRegion[0] == 1 && currentRegion[1] == 6){
@@ -180,27 +202,27 @@ public class Regions {
             if(booleanDialogue.get(Area)){
                 switch(Area){
                     case 1:
-                    System.out.println("\n\nWelcome to this mystical forest where the trees grow backwards and there are all sorts of undiscovered wonders.");
+                    System.out.println("\n\nWelcome to this mystical forest where the trees grow backwards and there are all sorts of undiscovered wonders....");
                     bufferedLine = input.nextLine();
                     break;
                     case 2:
-                    System.out.println("");
+                    System.out.println("You enter a swampy area, your feet sink into the fragile ground as you hear sounds from creatures of all sorts....");
                     bufferedLine = input.nextLine();
                     break;
                     case 3:
-                    System.out.println("");
+                    System.out.println("Leaving the swamp you come to a field inhabited by nothing more than crops as far as the eye can see....");
                     bufferedLine = input.nextLine();
                     break;
                     case 4:
-                    System.out.println("");
+                    System.out.println("As the sun begins to set you stroll by a lake with crystal clear water and unidentifiable objects at the bottom....");
                     bufferedLine = input.nextLine();
                     break;
                     case 5:
-                    System.out.println("");
+                    System.out.println("With the sky turned dark you struggle to see through the trees, you hear noises all around you....");
                     bufferedLine = input.nextLine();
                     break;
                     case 6:
-                    System.out.println("");
+                    System.out.println("Among gravestones and the remains of ancient buildings you hear the sound of crumbling stone....");
                     bufferedLine = input.nextLine();
                     break;
                 }
@@ -213,27 +235,27 @@ public class Regions {
             if(booleanDialogue.get(Area)){
                 switch(Area){
                     case 7:
-                    System.out.println("\n\nWelcome to this mystical forest where the trees grow backwards and there are all sorts of undiscovered wonders.");
+                    System.out.println("\n\nAs you enter the castle you see a magnificent hallway with blood red carpets and torchlight illuminating the way....");
                     bufferedLine = input.nextLine();
                     break;
                     case 8:
-                    System.out.println("");
+                    System.out.println("You see interesting artifacts strewn among the rooms of this castle....");
                     bufferedLine = input.nextLine();
                     break;
                     case 9:
-                    System.out.println("");
+                    System.out.println("As you leave the first building winding towers that threaten their own collapse at any moment stand tall around you....");
                     bufferedLine = input.nextLine();
                     break;
                     case 10:
-                    System.out.println("");
+                    System.out.println("You enter a building that may have once been a holy place, but has clearly been abandoned and forgotten....");
                     bufferedLine = input.nextLine();
                     break;
                     case 11:
-                    System.out.println("");
+                    System.out.println("As you tread deeper through the castle you feel as if eyes are watching you from all directions....");
                     bufferedLine = input.nextLine();
                     break;
                     case 12:
-                    System.out.println("");
+                    System.out.println("Your suspicions of being watched are confirmed as a large figure looms at the end of the final hallway....");
                     bufferedLine = input.nextLine();
                     break;
                 }
@@ -246,19 +268,19 @@ public class Regions {
             if(booleanDialogue.get(Area)){
                 switch(Area){
                     case 13:
-                    System.out.println("\n\nWelcome to this mystical forest where the trees grow backwards and there are all sorts of undiscovered wonders.");
+                    System.out.println("\n\nAs you leave the ancient castle you path forces you into a foul smelling sewer system....");
                     bufferedLine = input.nextLine();
                     break;
                     case 14:
-                    System.out.println("");
+                    System.out.println("You come across some sort of holding tank surrounded by shadowy figures that seem to worship it....");
                     bufferedLine = input.nextLine();
                     break;
                     case 15:
-                    System.out.println("");
+                    System.out.println("Your nose seems to recede as you encounter a foul smelling lake that certainly does not contain any water....");
                     bufferedLine = input.nextLine();
                     break;
                     case 16:
-                    System.out.println("");
+                    System.out.println("Your path comes to a stop as you encounter a strange man in ritual like clothing blocking the way....");
                     bufferedLine = input.nextLine();
                     break;
                 }
@@ -270,19 +292,19 @@ public class Regions {
             if(booleanDialogue.get(Area)){
                 switch(Area){
                     case 17:
-                    System.out.println("\n\nWelcome to this mystical forest where the trees grow backwards and there are all sorts of undiscovered wonders.");
+                    System.out.println("\n\nAs you depart from the sewers you begin your accent of a winding staircase, maybe this will lead to, him....");
                     bufferedLine = input.nextLine();
                     break;
                     case 18:
-                    System.out.println("");
+                    System.out.println("AS you reach the top of the staircase you are forced to cross a bridge connecting two adjacent towers, will this be the end?....");
                     bufferedLine = input.nextLine();
                     break;
                     case 19:
-                    System.out.println("");
+                    System.out.println("With the peak of the tower reached, you can hardly grasp small everything on the ground seems....");
                     bufferedLine = input.nextLine();
                     break;
                     case 20:
-                    System.out.println("");
+                    System.out.println("Your journey ends here one way or another.... You must defeat Him......");
                     bufferedLine = input.nextLine();
                     break;
                 }
