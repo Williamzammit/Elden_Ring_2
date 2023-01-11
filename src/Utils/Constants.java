@@ -18,7 +18,7 @@ public class Constants {
   //Values not finalized
   public static String playerName = "Joe";
   public static double playerHealth = 20;
-  public static double playerDamage = 115;
+  public static double playerDamage = 5;
 
   public static int playerSkillPoints = 0;
 
